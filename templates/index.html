@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>ForecaSite</title>
+  <meta property="og:title" content="ForecaSite" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta property="twitter:card" content="summary_large_image" />
+
+  <style data-tag="reset-style-sheet">
+    html {
+      line-height: 1.15;
+    }
+
+    body {
+      margin: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+      border-width: 0;
+      border-style: solid;
+    }
+
+    p,
+    li,
+    ul,
+    pre,
+    div,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    figure,
+    blockquote,
+    figcaption {
+      margin: 0;
+      padding: 0;
+    }
+
+    button {
+      background-color: transparent;
+    }
+
+    button,
+    input,
+    optgroup,
+    select,
+    textarea {
+      font-family: inherit;
+      font-size: 100%;
+      line-height: 1.15;
+      margin: 0;
+    }
+
+    button,
+    select {
+      text-transform: none;
+    }
+
+    button,
+    [type="button"],
+    [type="reset"],
+    [type="submit"] {
+      -webkit-appearance: button;
+    }
+
+    button::-moz-focus-inner,
+    [type="button"]::-moz-focus-inner,
+    [type="reset"]::-moz-focus-inner,
+    [type="submit"]::-moz-focus-inner {
+      border-style: none;
+      padding: 0;
+    }
+
+    button:-moz-focus,
+    [type="button"]:-moz-focus,
+    [type="reset"]:-moz-focus,
+    [type="submit"]:-moz-focus {
+      outline: 1px dotted ButtonText;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: inherit;
+    }
+
+    input {
+      padding: 2px 4px;
+    }
+
+    img {
+      display: block;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+  <style data-tag="default-style-sheet">
+    html {
+      font-family: Inter;
+      font-size: 16px;
+    }
+
+    body {
+      font-weight: 400;
+      font-style: normal;
+      text-decoration: none;
+      text-transform: none;
+      letter-spacing: normal;
+      line-height: 1.55;
+      color: var(--dl-color-gray-900);
+      background-color: var(--dl-color-gray-white);
+    }
+  </style>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+    data-tag="font" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script:wght@400&amp;display=swap"
+    data-tag="font" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script>
+    ScrollReveal({ reset: false });
+  </script>
+  <script src="https://kit.fontawesome.com/f6cf9a2499.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+  <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+  <script type="text/javascript" src="https://livejs.com/live.js"></script>
+</head>
+
+<body>
+  <div>
+    <link href="{{ url_for('static', filename='home.css') }}" rel="stylesheet" />
+
+    <div class="home-container" id="home-container">
+      {% include 'header.html' %}
+      <div class="home-main">
+        <div class="home-blur-background"></div>
+        <div class="home-hero">
+          <div class="home-container07">
+            <h1 class="home-text12 Headline1 mb-5">
+              <span>Ride smarter.</span>
+              <br />
+              <span>Not harder.</span>
+            </h1>
+            <h2 class="text-2xl text-center">
+              Save money and time with our easy-to-use prediction tool.
+            </h2>
+            <br />
+            <div class="primary-button-container mt-5">
+              <button type="button" onclick="scrollToDiv('home-testimonials')"
+                class="primary-button-button MediumLabel button">
+                <span>Try It Now</span>
+              </button>
+            </div>
+          </div>
+          <img alt="image" src="{{ url_for('static', filename='public/playground_assets/go-food.png') }}"
+            class="home-image02" />
+        </div>
+        <img alt="image" src="{{ url_for('static', filename='public/playground_assets/turquoise-circle.svg') }}"
+          class="home-turquoise-cirble" />
+        <img alt="image" src="{{ url_for('static', filename='public/playground_assets/purple-circle.svg') }}"
+          class="home-purple-circle" />
+        <img alt="image" src="{{ url_for('static', filename='public/playground_assets/left.svg') }}"
+          class="home-left" />
+        <img alt="image" src="{{ url_for('static', filename='public/playground_assets/right.svg') }}"
+          class="home-right" />
+      </div>
+      <div class="home-clients mb-10">
+        <div class="home-divider"></div>
+        <img alt="image" src="{{ url_for('static', filename='public/playground_assets/Uber-Logo.png') }}"
+          class="home-image03" />
+        <img alt="image" src="{{ url_for('static', filename='public/playground_assets/lyft-logo.png') }}"
+          class="home-image04 p-5" />
+        <img alt="image" src="{{ url_for('static', filename='public/playground_assets/hacktiv8-logo.webp') }}"
+          class="home-image05" />
+        <img alt="image" src="{{ url_for('static', filename='public/playground_assets/logo-mbkm.png') }}"
+          class="home-image06 p-4" />
+
+        <div class="home-divider1"></div>
+      </div>
+      <div class="home-features bg-white" id="home-features">
+        <h2 class="Headline2 home-text16">Data Analysis and Model Building</h2>
+        <h3 class="Subtitle2 text-xl">Uncover insights and build accurate models using our IPython Notebook.</h3>
+        <button type="button" id="fullscreen-btn"
+          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mt-3">See
+          More in Fullscreen<i class="fa-solid fa-expand ml-3"></i></button>
+        <div>
+          <div id="ipynb"
+            class="container overflow-x-auto max-h-[36rem] max-w-9xl my-12 drop-shadow-[0_15px_15px_rgba(0,0,0,0.25)]">
+            <div>
+              <script
+                src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2FArsenMakomi%2FPYTN_KampusMerdeka_fp1_Arsen-Makomi%2Fblob%2Fmain%2FPYTN_KampusMerdeka_fp1_Arsen%2520Makomi.ipynb&style=atom-one-light&type=ipynb&showBorder=on&showLineNumbers=on&showFileMeta=on&showFullPath=on&showCopy=on"></script>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="bg-[var(--dl-color-turquoise-100)] w-full">
+        <div class="home-testimonials pt-12 sm:pt-24 md:pt-36 lg:pt-48 xl:pt-64 pb-12 sm:pb-24 md:pb-36 lg:pb-48 xl:pb-64 pl-6 sm:pl-12 md:pl-24 lg:pl-48 xl:pl-96 pr-6 sm:pr-12 md:pr-24 lg:pr-48 xl:pr-96" id="home-testimonials">
+          <div id="map_hero" style="display: block;" class="home-container08">
+            <div class="home-container09">
+              <img alt="image" src="{{ url_for('static', filename='public/playground_assets/mdi_location.svg') }}"
+                class="home-image08" />
+
+              <h1 class="home-text19 Headline2 z-2">
+                Try Our Fare Prediction Tool
+              </h1>
+              <h1 class="section3-subtitle w-96">Experience the power of our model: Enter your destination, view your
+                route, and compare Uber vs Lyft fares.</h1>
+            </div>
+          </div>
+          <div id="closing_container" style="display: none;" class="text-center closing_container">
+            <img alt="image" src="{{ url_for('static', filename='public/playground_assets/mdi_location.svg') }}"
+              class="home-image08" />
+            <h1 class="text-4xl text-left" style="position: relative; z-index: 2;">Choose Your Best Ride Option</h1>
+
+          </div>
+          <div id="map_container" style="display: none;" class="text-center map_container">
+            <div class="home-container09">
+              <img alt="image" src="{{ url_for('static', filename='public/playground_assets/mdi_location.svg') }}"
+                class="home-image08" />
+            </div>
+            <h1 class="text-4xl text-left font-semibold" style="position: relative; z-index: 2;">Do we get your route right?</h1>
+            <div class="my-8">
+              <div id="map" class="map">{{ map_obj | safe }}</div>
+              <div id="distance" class="distance"></div>
+            </div>
+            <button type="button" id="predict"
+              class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">Compare
+              now!</button>
+          </div>
+          <div id="comparison_container" class="comparison_container" style="display: none;">
+            <h1 class="Headline2 home-text16 text-center">Choose Your Best Ride Option</h1>
+            <div class="flex items-center justify-center">
+              <h3 class="Subtitle2 text-xl">Decide between Uber and Lyft based on the fare comparison for your specific
+                route.</h3>
+            </div>
+            <div id="prediction-table" class="relative overflow-x-auto shadow-md sm:rounded-lg shadow-xl my-12">
+              <table class="w-full text-sm text-left text-gray-500">
+                <thead class="text-xs text-gray-700 uppercase bg-white">
+                  <tr>
+                    <th scope="col" colspan="2" class="px-6 pt-6 pb-20 bg-gradient-to-b from-white to-black from-40%"
+                      align="center">
+                      <img alt="image" src="{{ url_for('static', filename='public/playground_assets/Uber-Logo.png') }}"
+                        class="home-image03" />
+                    </th>
+                    <th scope="col" colspan="2" class="px-6 pt-6 pb-20 bg-gradient-to-b from-white to-pink-500 from-40%"
+                      align="center">
+                      <img alt="image" src="{{ url_for('static', filename='public/playground_assets/lyft-logo.png') }}"
+                        class="home-image04 p-5" />
+                    </th>
+                  </tr>
+                </thead>
+                <tbody id="refresh-table">
+
+                </tbody>
+              </table>
+            </div>
+            <div style="display: none" class="flex items-center justify-center" id="try-route">
+              <h3 class="Subtitle2 text-xl">Want to try other routes? click this</h3>
+              <button type="button" id="reset"
+                class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-1 mx-3">Reset</button>
+              <h3 class="Subtitle2 text-xl">button.</h3>
+            </div>
+          </div>
+          <div class="home-container10 my-10" id="home-container10" style="display: block;">
+            <div class="testimonials-card-container">
+              <form id="form">
+                <div class="mb-6">
+                  <label for="start_location" class="block mb-2 text-sm font-medium text-gray-900">Origin</label>
+                  <input type="text" id="start_location" name="start_location"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                    required>
+                </div>
+                <div class="mb-6">
+                  <label for="end_location" class="block mb-2 text-sm font-medium text-gray-900">Destination</label>
+                  <input type="text" id="end_location" name="end_location"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                    required>
+                </div>
+                <div class="mb-6">
+                  <label for="surge_multiplier" class="block mb-2 text-sm font-medium text-gray-900">Surge
+                    Multiplier</label>
+                  <input type="number" value="1" step="0.25" max="3" min="1" id="surge_multiplier"
+                    name="surge_multiplier"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                    required>
+                </div>
+                <button type="submit" id="showMapButton"
+                  class="focus:outline-none mb-6 text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5">Show
+                  Map</button>
+              </form>
+
+              <p id="distance"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="home-wrapper">
+      <div class="home-achievements">
+        <div class="home-container14">
+          <h2 class="home-text21">
+            <span class="home-text22">In recent years mobility</span>
+            <br />
+            <span>services</span>
+          </h2>
+          <span class="home-text25">
+            Have been best and preferred option of commuting
+          </span>
+        </div>
+        <div class="home-container15">
+          <div class="home-container16">
+            <div class="stats-card-container">
+              <img alt="image" src="{{ url_for('static', filename='public/playground_assets/01.svg') }}"
+                class="stats-card-image" />
+              <div class="stats-card-container1">
+                <h1 class="Headline4"><span>14 Million+</span></h1>
+                <span class="Body1"><span>Trips per day</span></span>
+              </div>
+            </div>
+            <div class="stats-card-container">
+              <img alt="image" src="{{ url_for('static', filename='public/playground_assets/04.svg') }}"
+                class="stats-card-image" />
+              <div class="stats-card-container1">
+                <h1 class="Headline4"><span>142.5 Million</span></h1>
+                <span class="Body1"><span>Users</span></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="home-container17">
+            <div class="stats-card-container">
+              <img alt="image" src="{{ url_for('static', filename='public/playground_assets/05.svg') }}"
+                class="stats-card-image" />
+              <div class="stats-card-container1">
+                <h1 class="Headline4"><span>100+</span></h1>
+                <span class="Body1"><span>Partner</span></span>
+              </div>
+            </div>
+            <div class="stats-card-container">
+              <img alt="image" src="{{ url_for('static', filename='public/playground_assets/07.svg') }}"
+                class="stats-card-image" />
+              <div class="stats-card-container1">
+                <h1 class="Headline4"><span>71</span></h1>
+                <span class="Body1"><span>Countries</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="home-feature1">
+        <div class="home-container18">
+          <img alt="image" src="{{ url_for('static', filename='public/playground_assets/toy-car.png') }}"
+            class="home-image09" />
+        </div>
+        <div class="home-container19">
+          <h3 class="Headline3">Elevate Your Ride Experience</h3>
+          <span class="home-text27 Lead1">
+            Explore the seamless blend of convenience, reliability, and efficiency offered by modern mobility services.
+            Discover a world of effortless transportation, where innovative technology meets exceptional service.
+            Whether you're commuting, traveling, or simply exploring a new city, embrace the future of mobility and
+            unlock a new level of convenience, safety, and affordability. Experience the power of modern mobility
+            services and redefine the way you move.
+          </span>
+          <div class="link-icon-button-container">
+            <button class="link-icon-button-button button">
+              <span class="MediumLabel"><span>Get Started</span></span>
+              <svg viewBox="0 0 1024 1024" class="link-icon-button-icon">
+                <path
+                  d="M481.835 243.499l225.835 225.835h-494.336c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667h494.336l-225.835 225.835c-16.683 16.683-16.683 43.691 0 60.331s43.691 16.683 60.331 0l298.667-298.667c3.925-3.925 7.083-8.619 9.259-13.824 4.309-10.453 4.309-22.229 0-32.683-2.091-5.035-5.163-9.728-9.259-13.824l-298.667-298.667c-16.683-16.683-43.691-16.683-60.331 0s-16.683 43.691 0 60.331z">
+                </path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="home-feature2">
+        <div class="home-container20">
+          <h2 class="Headline2 home-text28">
+            Embodying the Modern Ride Experience
+          </h2>
+          <span class="home-text29 Lead1">
+            Delve into the dynamic realm of urban mobility,
+            where the modern ride experience is redefined.
+            Witness the transformation of transportation as
+            cutting-edge technology intertwines with exceptional
+            service. Whether you're commuting, traveling, or
+            immersing yourself in a new city, seize the future
+            of mobility and unlock unparalleled convenience,
+            safety, and affordability.
+          </span>
+        </div>
+        <img alt="image" src="{{ url_for('static', filename='public/playground_assets/map-footer.png') }}"
+          image_src="public/playground_assets/iphonex-1200w.png" class="home-image10" />
+      </div>
+      </div>
+      <div class="home-cta h-96">
+        <div class="home-container21">
+          <div class="home-container22">
+            <h2 class="Headline2 home-text30">
+              Meet the team!
+            </h2>
+            <span class="home-text31 Lead1">
+              Meet the team behind our prediction app! With expertise in data analysis, ML, and software development,
+              we've crafted a powerful tool for informed decisions.
+            </span>
+            <span class="home-text32 Subtitle2">
+              <span class="home-text33">Star the Project on GitHub</span>
+            </span>
+            <div class="store-banner-store-banner">
+              <iframe
+                src="https://ghbtns.com/github-btn.html?user=bayujo&repo=ForecaSite&type=star&count=true&size=large"
+                frameborder="0" scrolling="0" width="170" height="30" title="GitHub"></iframe>
+            </div>
+          </div>
+          <div class="home-container23">
+            <div id="team" class="flex">
+              <div id="profile-1" class="badge-base LI-profile-badge flex justify-center items-center" data-locale="in_ID" data-size="medium" data-theme="light" data-type="VERTICAL" data-vanity="bayujo" data-version="v1">
+                <a class="badge-base__link LI-simple-link" href="https://id.linkedin.com/in/bayujo?trk=profile-badge"></a>
+              </div>
+              <div style="display: none;" id="profile-2" class="badge-base LI-profile-badge flex justify-center items-center" data-locale="in_ID" data-size="medium" data-theme="light" data-type="VERTICAL" data-vanity="arsen-makomi" data-version="v1">
+                <a class="badge-base__link LI-simple-link" href="https://id.linkedin.com/in/arsen-makomi?trk=profile-badge"></a>
+              </div>
+              <div style="display: none;" id="profile-3" class="badge-base LI-profile-badge flex justify-center items-center" data-locale="in_ID" data-size="medium" data-theme="light" data-type="VERTICAL" data-vanity="achmad-azka-muaffan-s-p-8ab0a3255" data-version="v1">
+                <a class="badge-base__link LI-simple-link" href="https://id.linkedin.com/in/achmad-azka-muaffan-s-p-8ab0a3255?trk=profile-badge"></a>
+              </div>
+            </div>            
+          </div>
+        </div>
+      </div>
+      {% include 'footer.html' %}
+    </div>
+  </div>
+  <script src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+</body>
+
+</html>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
+<script src="{{ url_for('static', filename='script.js') }}"></script>

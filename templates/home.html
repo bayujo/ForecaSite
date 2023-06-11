@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>House Price Predictor</title>
+</head>
+<body>
+    <h1>House Price Predictor</h1>
+    <form method="POST" action="/predict">
+        <label for="length">Length:</label>
+        <input type="text" id="length" name="length"><br><br>
+        <label for="width">Width:</label>
+        <input type="text" id="width" name="width"><br><br>
+        <input type="submit" value="Predict">
+    </form>
+
+    {% if prediction %}
+    <p>Predicted price: ${{ prediction }}</p>
+    {% endif %}
+
+    {% if error %}
+    <p style="color: red;">{{ error }}</p>
+    {% endif %}
+</body>
+</html>
+
+
+<form id="predict-form">
+    <label for="length">Length:</label>
+    <input type="text" id="length" name="length"><br><br>
+    <label for="width">Width:</label>
+    <input type="text" id="width" name="width"><br><br>
+  </form>
+  
+  <div class="primary-button-container">
+    <button type="button" id="predict-button" class="primary-button-button MediumLabel button">
+      <span>Predict</span>
+    </button>
+  </div>
+  
+  <div id="result"></div>
+
+
+  
+  <div class="home-features">
+    <h2 class="Headline2 home-text16">Tailor-made features</h2>
+    <span class="home-text17">
+      <span class="home-text18">
+        Lorem ipsum is common placeholder text used to demonstrate the
+        graphic elements of a document or visual presentation.
+      </span>
+    </span>
+    <div class="home-features1">
+      <div class="feature-card-container">
+        <img
+          alt="image"
+          src="{{ url_for('static', filename='public/playground_assets/01.svg') }}"
+          class="feature-card-image"
+        />
+
+        <h5 class="feature-card-text Headline5">
+          <span>Robust workflow</span>
+        </h5>
+        <span class="feature-card-text1">
+          <span>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+            erat nibh tristique ipsum.
+          </span>
+        </span>
+      </div>
+      <div class="feature-card-container">
+        <img
+          alt="image"
+          src="{{ url_for('static', filename='public/playground_assets/02.svg') }}"
+          class="feature-card-image"
+        />
+
+        <h5 class="feature-card-text Headline5">
+          <span>Flexibility</span>
+        </h5>
+        <span class="feature-card-text1">
+          <span>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+            erat nibh tristique ipsum.
+          </span>
+        </span>
+      </div>
+      <div class="feature-card-container">
+        <img
+          alt="image"
+          src="{{ url_for('static', filename='public/playground_assets/03.svg') }}"
+          class="feature-card-image"
+        />
+
+        <h5 class="feature-card-text Headline5">
+          <span>User friendly</span>
+        </h5>
+        <span class="feature-card-text1">
+          <span>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+            erat nibh tristique ipsum.
+          </span>
+        </span>
+      </div>
+      <div class="feature-card-container">
+        <img
+          alt="image"
+          src="{{ url_for('static', filename='public/playground_assets/04.svg') }}"
+          class="feature-card-image"
+        />
+
+        <h5 class="feature-card-text Headline5">
+          <span>Multiple layouts</span>
+        </h5>
+        <span class="feature-card-text1">
+          <span>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+            erat nibh tristique ipsum.
+          </span>
+        </span>
+      </div>
+      <div class="feature-card-container">
+        <img
+          alt="image"
+          src="{{ url_for('static', filename='public/playground_assets/05.svg') }}"
+          class="feature-card-image"
+        />
+
+        <h5 class="feature-card-text Headline5">
+          <span>Better compoents</span>
+        </h5>
+        <span class="feature-card-text1">
+          <span>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+            erat nibh tristique ipsum.
+          </span>
+        </span>
+      </div>
+      <div class="feature-card-container">
+        <img
+          alt="image"
+          src="{{ url_for('static', filename='public/playground_assets/06.svg') }}"
+          class="feature-card-image"
+        />
+
+        <h5 class="feature-card-text Headline5">
+          <span>Well organized</span>
+        </h5>
+        <span class="feature-card-text1">
+          <span>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+            erat nibh tristique ipsum.
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>

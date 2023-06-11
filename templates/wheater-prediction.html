@@ -1,0 +1,28 @@
+{% if prediction[0] == 'No' %}
+<h1 class="Headline2 home-text16 text-center">Good for you! today will be full of sunshine!</h1>
+<div class="flex items-center justify-center text-center">
+  <h3 class="Subtitle2 text-xl">Don't forget to use your sunscreen if you plan to go on a picnic, SUN IS A DEADLY LAZER!</h3>
+</div>
+<div id="prediction-div" class="flex items-center justify-center">
+    <img alt="image" src="{{ url_for('static', filename='public/playground_assets/sun.gif') }}"
+    class="py-12" />
+</div>
+{% elif prediction[0] == 'Yes' %}
+<h1 class="Headline2 home-text16 text-center">Prepare your umbrella! or a hot chocolate.</h1>
+<div class="flex items-center justify-center text-center">
+  <h3 class="Subtitle2 text-xl">Our "machine learning" algorithm is quite sure it will likely rain today.</h3>
+</div>
+<div id="prediction-div" class="flex items-center justify-center">
+    <img alt="image" src="{{ url_for('static', filename='public/playground_assets/rain.gif') }}"
+    class="py-12" />
+</div>
+{% else %}
+<h1 class="Headline2 home-text16 text-center">Sorry there is problem from our server.</h1>
+<div class="flex items-center justify-center text-center">
+  <h3 class="Subtitle2 text-xl">Our little machine is a bit confused, please try again later.</h3>
+</div>
+<div id="prediction-div" class="flex items-center justify-center">
+    <img alt="image" src="{{ url_for('static', filename='public/playground_assets/kuru.gif') }}"
+    class="py-12" />
+</div>
+{% endif %}
