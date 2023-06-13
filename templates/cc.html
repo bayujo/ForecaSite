@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>ForecaSite</title>
+  <meta property="og:title" content="ForecaSite" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta property="twitter:card" content="summary_large_image" />
+
+  <style data-tag="reset-style-sheet">
+    html {
+      line-height: 1.15;
+    }
+
+    body {
+      margin: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+      border-width: 0;
+      border-style: solid;
+    }
+
+    p,
+    li,
+    ul,
+    pre,
+    div,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    figure,
+    blockquote,
+    figcaption {
+      margin: 0;
+      padding: 0;
+    }
+
+    button {
+      background-color: transparent;
+    }
+
+    button,
+    input,
+    optgroup,
+    select,
+    textarea {
+      font-family: inherit;
+      font-size: 100%;
+      line-height: 1.15;
+      margin: 0;
+    }
+
+    button,
+    select {
+      text-transform: none;
+    }
+
+    button,
+    [type="button"],
+    [type="reset"],
+    [type="submit"] {
+      -webkit-appearance: button;
+    }
+
+    button::-moz-focus-inner,
+    [type="button"]::-moz-focus-inner,
+    [type="reset"]::-moz-focus-inner,
+    [type="submit"]::-moz-focus-inner {
+      border-style: none;
+      padding: 0;
+    }
+
+    button:-moz-focus,
+    [type="button"]:-moz-focus,
+    [type="reset"]:-moz-focus,
+    [type="submit"]:-moz-focus {
+      outline: 1px dotted ButtonText;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: inherit;
+    }
+
+    input {
+      padding: 2px 4px;
+    }
+
+    img {
+      display: block;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+  <style data-tag="default-style-sheet">
+    html {
+      font-family: Inter;
+      font-size: 16px;
+    }
+
+    body {
+      font-weight: 400;
+      font-style: normal;
+      text-decoration: none;
+      text-transform: none;
+      letter-spacing: normal;
+      line-height: 1.55;
+      color: var(--dl-color-gray-900);
+      background-color: var(--dl-color-gray-white);
+    }
+  </style>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+    data-tag="font" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script:wght@400&amp;display=swap"
+    data-tag="font" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script>
+    ScrollReveal({ reset: false });
+  </script>
+  <script src="https://kit.fontawesome.com/f6cf9a2499.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+  <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+
+<body>
+  <div>
+    <link href="{{ url_for('static', filename='home.css') }}" rel="stylesheet" />
+
+    <div class="home-container" id="home-container">
+      {% include 'header.html' %}
+      <div class="home-main">
+        <div class="home-blur-background"></div>
+        <div class="home-hero">
+          <div class="home-container07">
+            <h1 class="home-text12 Headline1 mb-5">
+              <span>Know your</span>
+              <br />
+              <span>Client better.</span>
+            </h1>
+            <h2 class="text-2xl text-center">
+              Empowering Decision-making through AI.
+            </h2>
+            <br />
+            <div class="primary-button-container mt-5">
+              <button type="button" onclick="scrollToDiv('home-testimonials')"
+                class="primary-button-button3 bg-sky-500 hover:bg-sky-400 active:bg-sky-600 MediumLabel button">
+                <span>Try It Now</span>
+              </button>
+            </div>
+          </div>
+          <img alt="image" src="{{ url_for('static', filename='public/playground_assets/credit-card.png') }}"
+            class="home-image02" />
+        </div>
+        <img alt="image" src="{{ url_for('static', filename='public/playground_assets/turquoise-circle.svg') }}"
+          class="home-turquoise-cirble" />
+        <img alt="image" src="{{ url_for('static', filename='public/playground_assets/black-circle.svg') }}"
+          class="home-purple-circle" />
+        <img alt="image" src="{{ url_for('static', filename='public/playground_assets/black-left.svg') }}"
+          class="home-left" />
+        <img alt="image" src="{{ url_for('static', filename='public/playground_assets/black-right.svg') }}"
+          class="home-right" />
+      </div>
+      <div class="home-clients mb-10">
+        <div class="home-divider"></div>
+        <img alt="image" src="{{ url_for('static', filename='public/playground_assets/visa.png') }}"
+          class="home-image03" />
+        <img alt="image" src="{{ url_for('static', filename='public/playground_assets/mastercard.png') }}"
+          class="home-image04 scale-75" />
+        <img alt="image" src="{{ url_for('static', filename='public/playground_assets/hacktiv8-logo.webp') }}"
+          class="home-image05" />
+        <img alt="image" src="{{ url_for('static', filename='public/playground_assets/logo-mbkm.png') }}"
+          class="home-image06 p-4" />
+
+        <div class="home-divider1"></div>
+      </div>
+      <div class="home-features bg-white" id="home-features">
+        <h2 class="Headline2 home-text16">Data Analysis and Model Building</h2>
+        <h3 class="Subtitle2 text-xl">Uncover insights and build accurate models using our IPython Notebook.</h3>
+        <button type="button" id="fullscreen-btn"
+          class="text-white bg-sky-500 hover:bg-sky-800 focus:ring-4 focus:ring-sky-300 font-medium rounded-lg text-sm px-5 py-2.5 mt-3">See
+          More in Fullscreen<i class="fa-solid fa-expand ml-3"></i></button>
+        <div>
+          <div id="ipynb"
+            class="container overflow-x-auto max-h-[36rem] max-w-9xl my-12 drop-shadow-[0_15px_15px_rgba(0,0,0,0.25)]">
+            <div>
+              <script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2FFafanazka%2FFinal-Project-4-Hackative-Data-Science%2Fblob%2Fmain%2FPYTN_KampusMerdeka_fp4_AchmadAzkaMuaffanSutomoPutra.ipynb&style=atom-one-light&type=ipynb&showBorder=on&showLineNumbers=on&showFileMeta=on&showFullPath=on&showCopy=on"></script>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-[var(--dl-color-turquoise-100)] w-full">
+        <div class="home-testimonials2 pt-12 sm:pt-24 md:pt-36 lg:pt-48 xl:pt-64 pb-12 sm:pb-24 md:pb-36 lg:pb-48 xl:pb-64 pl-6 sm:pl-12 md:pl-24 lg:pl-48 xl:pl-96 pr-6 sm:pr-12 md:pr-24 lg:pr-48 xl:pr-96" id="home-testimonials">
+          <div id="map_hero" class="home-container08">
+            <div class="home-container092">
+              <img alt="image" src="{{ url_for('static', filename='public/playground_assets/cc.svg') }}"
+                class="home-image08 scale-75" />
+              <h1 class="home-text19 Headline2 z-2">
+                Find out clients behaviour
+              </h1>
+              <h1 class="section3-subtitle w-96 xl:text-left lg:text-left md:text-left text-center">Simply enter your clients credit card usage and we'll classify what group they are into.</h1>
+            </div>
+          </div>
+          <div id="comparison_container" class="comparison_container" style="display: block;">
+            <div id="refresh-table">
+
+            </div>
+            <div class="flex items-center justify-center" style="display: none;" id="try-route">
+              <h3 class="Subtitle2 text-xl">Not sure? click this</h3>
+              <button type="button" id="reset"
+                class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-1 mx-3">Reset</button>
+              <h3 class="Subtitle2 text-xl">button to try again.</h3>
+            </div>            
+          </div>
+          <div class="home-container102 my-10" id="home-container10">
+            <div class="testimonials-card-container">
+              <form id="form">
+                <div class="xl:grid xl:grid-cols-5 xl:gap-4 lg:grid lg:grid-cols-4 lg:gap-4 md:grid md:grid-cols-3 md:gap-4">
+                  <div class="mb-6">
+                    <label for="balance" class="block mb-2 text-sm font-medium text-gray-900">Balance</label>
+                    <input step="any" type="number" id="balance"
+                      name="balance"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                      required>
+                  </div>
+                  <!-- Additional Fields -->
+                  <div class="mb-6">
+                    <label for="balance_frequency" class="block mb-2 text-sm font-medium text-gray-900">Balance Freq</label>
+                    <input type="number" id="balance_frequency"
+                      name="balance_frequency"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                      min="0.0" max="1.0" step="0.01" required>
+                  </div>
+                  <div class="mb-6">
+                    <label for="purchases" class="block mb-2 text-sm font-medium text-gray-900">Purchases</label>
+                    <input step="any" type="number" id="purchases"
+                      name="purchases"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                      required>
+                  </div>
+                  <div class="mb-6">
+                    <label for="oneoff_purchases" class="block mb-2 text-sm font-medium text-gray-900">One-Off Purchases</label>
+                    <input step="any" type="number" id="oneoff_purchases"
+                      name="oneoff_purchases"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                      required>
+                  </div>
+                  <div class="mb-6">
+                    <label for="installments_purchases" class="block mb-2 text-sm font-medium text-gray-900">Installments Purchases</label>
+                    <input step="any" type="number" id="installments_purchases"
+                      name="installments_purchases"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                      required>
+                  </div>
+                  <div class="mb-6">
+                    <label for="cash_advance" class="block mb-2 text-sm font-medium text-gray-900">Cash Advance</label>
+                    <input step="any" type="number" id="cash_advance"
+                      name="cash_advance"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                      required>
+                  </div>
+                  <div class="mb-6">
+                    <label for="purchases_frequency" class="block mb-2 text-sm font-medium text-gray-900">Purchases Freq</label>
+                    <input type="number" id="purchases_frequency"
+                      name="purchases_frequency"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                      min="0.0" max="1.0" step="0.01" required>
+                  </div>
+                  <div class="mb-6">
+                    <label for="oneoff_purchases_frequency" class="block mb-2 text-sm font-medium text-gray-900">One-Off Purchases Freq</label>
+                    <input type="number" id="oneoff_purchases_frequency"
+                      name="oneoff_purchases_frequency"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                      min="0.0" max="1.0" step="0.01" required>
+                  </div>
+                  <div class="mb-6">
+                    <label for="purchases_installments_frequency" class="block mb-2 text-sm font-medium text-gray-900">Purchases Installments Freq</label>
+                    <input type="number" id="purchases_installments_frequency"
+                      name="purchases_installments_frequency"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                      min="0.0" max="1.0" step="0.01" required>
+                  </div>
+                  <div class="mb-6">
+                    <label for="cash_advance_frequency" class="block mb-2 text-sm font-medium text-gray-900">Cash Advance Freq</label>
+                    <input type="number" id="cash_advance_frequency"
+                      name="cash_advance_frequency"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                      min="0.0" max="1.0" step="0.01" required>
+                  </div>
+                  <div class="mb-6">
+                    <label for="cash_advance_trx" class="block mb-2 text-sm font-medium text-gray-900">Cash Advance TRX</label>
+                    <input step="any" type="number" id="cash_advance_trx"
+                      name="cash_advance_trx"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                      required>
+                  </div>
+                  <div class="mb-6">
+                    <label for="purchases_trx" class="block mb-2 text-sm font-medium text-gray-900">Purchases TRX</label>
+                    <input step="any" type="number" id="purchases_trx"
+                      name="purchases_trx"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                      required>
+                  </div>
+                  <div class="mb-6">
+                    <label for="credit_limit" class="block mb-2 text-sm font-medium text-gray-900">Credit Limit</label>
+                    <input step="any" type="number" id="credit_limit"
+                      name="credit_limit"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                      required>
+                  </div>
+                  <div class="mb-6">
+                    <label for="payments" class="block mb-2 text-sm font-medium text-gray-900">Payments</label>
+                    <input step="any" type="number" id="payments"
+                      name="payments"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                      required>
+                  </div>
+                  <div class="mb-6">
+                    <label for="minimum_payments" class="block mb-2 text-sm font-medium text-gray-900">Minimum Payments</label>
+                    <input step="any" type="number" id="minimum_payments"
+                      name="minimum_payments"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                      required>
+                  </div>
+                  <div class="mb-6 xl:col-span-2 lg:col-span-1 md:col-span-1">
+                    <label for="prc_full_payment" class="block mb-2 text-sm font-medium text-gray-900">PRC Full Payment</label>
+                    <input step="any" type="number" id="prc_full_payment"
+                      name="prc_full_payment"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                      required>
+                  </div>
+                  <div class="mb-6 xl:col-span-3 lg:col-span-4 md:col-span-2">
+                    <label for="tenure" class="block mb-2 text-sm font-medium text-gray-900">Tenure</label>
+                    <input step="any" type="number" id="tenure"
+                      name="tenure"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                      required>
+                  </div>
+                </div>
+                <!-- End of Additional Fields -->
+                <button type="submit" id="predict-cc"
+                  class="focus:outline-none mb-6 text-white bg-sky-500 hover:bg-sky-400 active:bg-sky-600 font-medium rounded-lg text-sm px-5 py-2.5">Check cluster</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="home-wrapper">
+      <div class="home-achievements">
+        <div class="home-container14">
+          <h2 class="home-text21">
+            <span class="home-text22">the first modern credit card </span>
+            <br />
+            <span>was introduced </span>
+          </h2>
+          <span class="home-text25">
+            in the United States in 1950
+          </span>
+        </div>
+        <div class="home-container15">
+          <div class="home-container16">
+            <div class="stats-card-container">
+              <img alt="image" src="{{ url_for('static', filename='public/playground_assets/globe.svg') }}"
+                class="stats-card-image" />
+              <div class="stats-card-container1">
+                <h1 class="Headline4"><span>3 billion</span></h1>
+                <span class="Body1"><span>In use globally</span></span>
+              </div>
+            </div>
+            <div class="stats-card-container">
+              <img alt="image" src="{{ url_for('static', filename='public/playground_assets/dollar2.svg') }}"
+                class="stats-card-image" />
+              <div class="stats-card-container1">
+                <h1 class="Headline4"><span>$1 trillion+</span></h1>
+                <span class="Body1"><span>Total debt</span></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="home-container17">
+            <div class="stats-card-container">
+              <img alt="image" src="{{ url_for('static', filename='public/playground_assets/secure.svg') }}"
+                class="stats-card-image" />
+              <div class="stats-card-container1">
+                <h1 class="Headline4"><span>$227 billion</span></h1>
+                <span class="Body1"><span>Loss to fraud</span></span>
+              </div>
+            </div>
+            <div class="stats-card-container">
+              <img alt="image" src="{{ url_for('static', filename='public/playground_assets/clock.svg') }}"
+                class="stats-card-image" />
+              <div class="stats-card-container1">
+                <h1 class="Headline4"><span>10 seconds</span></h1>
+                <span class="Body1"><span>Process time</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="home-feature1">
+        <div class="home-container184">
+          <img alt="image" src="{{ url_for('static', filename='public/playground_assets/card-coin.png') }}"
+            class="home-image09 -translate-y-8"/>
+        </div>
+        <div class="home-container19">
+          <h3 class="Headline3">Input Your Numbers Cautiously</h3>
+          <span class="home-text27 Lead1">
+            With increasing online transactions, individuals must stay vigilant to protect their financial information. Additionally, using secure payment gateways, strong passwords, and keeping software up to date can help prevent credit card fraud. By staying informed and adopting safe practices, individuals can safeguard themselves against this pervasive and damaging crime.
+          </span>
+          <div class="link-icon-button-container">
+            <button class="link-icon-button-button2 button">
+              <span class="MediumLabel text-sky-400"><span>Get Started</span></span>
+              <svg viewBox="0 0 1024 1024" class="link-icon-button-icon4">
+                <path
+                  d="M481.835 243.499l225.835 225.835h-494.336c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667h494.336l-225.835 225.835c-16.683 16.683-16.683 43.691 0 60.331s43.691 16.683 60.331 0l298.667-298.667c3.925-3.925 7.083-8.619 9.259-13.824 4.309-10.453 4.309-22.229 0-32.683-2.091-5.035-5.163-9.728-9.259-13.824l-298.667-298.667c-16.683-16.683-43.691-16.683-60.331 0s-16.683 43.691 0 60.331z">
+                </path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="home-feature2">
+        <div class="home-container20">
+          <h2 class="Headline2 home-text28">
+            Credit Card Around the World
+          </h2>
+          <span class="home-text29 Lead1">
+            With credit card widespread acceptance, they've become indispensable for international travel and online shopping. From bustling metropolises to remote corners of the world, credit cards offer convenience and security. They eliminate the need for currency exchange, making transactions seamless. Plus, they often provide perks like travel rewards and purchase protection. Credit cards ensure your financial flexibility across the globe.
+          </span>
+        </div>
+        <img alt="image" src="{{ url_for('static', filename='public/playground_assets/cc-map.png') }}"
+          image_src="public/playground_assets/iphonex-1200w.png" class="home-image10" />
+      </div>
+      </div>
+      <div class="home-cta h-96">
+        <div class="home-container21">
+          <div class="home-container22">
+            <h2 class="Headline2 home-text30">
+              Meet the team!
+            </h2>
+            <span class="home-text31 Lead1">
+              Meet the team behind our prediction app! With expertise in data analysis, ML, and software development,
+              we've crafted a powerful tool for informed decisions.
+            </span>
+            <span class="home-text32 Subtitle2">
+              <span class="home-text33">Star the Project on GitHub</span>
+            </span>
+            <div class="store-banner-store-banner">
+              <iframe
+                src="https://ghbtns.com/github-btn.html?user=bayujo&repo=ForecaSite&type=star&count=true&size=large"
+                frameborder="0" scrolling="0" width="170" height="30" title="GitHub"></iframe>
+            </div>
+          </div>
+          <div class="home-container23">
+            <div id="team" class="flex">
+              <div id="profile-1" class="badge-base LI-profile-badge flex justify-center items-center" data-locale="in_ID" data-size="medium" data-theme="light" data-type="VERTICAL" data-vanity="bayujo" data-version="v1">
+                <a class="badge-base__link LI-simple-link" href="https://id.linkedin.com/in/bayujo?trk=profile-badge"></a>
+              </div>
+              <div style="display: none;" id="profile-2" class="badge-base LI-profile-badge flex justify-center items-center" data-locale="in_ID" data-size="medium" data-theme="light" data-type="VERTICAL" data-vanity="arsen-makomi" data-version="v1">
+                <a class="badge-base__link LI-simple-link" href="https://id.linkedin.com/in/arsen-makomi?trk=profile-badge"></a>
+              </div>
+              <div style="display: none;" id="profile-3" class="badge-base LI-profile-badge flex justify-center items-center" data-locale="in_ID" data-size="medium" data-theme="light" data-type="VERTICAL" data-vanity="achmad-azka-muaffan-s-p-8ab0a3255" data-version="v1">
+                <a class="badge-base__link LI-simple-link" href="https://id.linkedin.com/in/achmad-azka-muaffan-s-p-8ab0a3255?trk=profile-badge"></a>
+              </div>
+            </div>            
+          </div>
+        </div>
+      </div>
+      {% include 'footer.html' %}
+    </div>
+  </div>
+  <script src="{{ url_for('static', filename='custom-script.js') }}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+</body>
+
+</html>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
+<script src="{{ url_for('static', filename='script.js') }}"></script>

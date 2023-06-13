@@ -5,6 +5,7 @@ from geopy.distance import distance
 import pandas as pd
 import requests
 import datetime
+import numpy as np
 
 app = Flask(__name__)
 app.debug = True
@@ -285,6 +286,119 @@ def predict_heart():
     gradientboost_pred = loaded_model.predict(user_input)
 
     return render_template('heart-prediction.html', prediction=gradientboost_pred)
+
+@app.route('/cc-index')
+def cc_index():
+    return render_template('cc.html', active_link = 'cc')
+
+@app.route('/cc')
+def predict_cc():
+    with open('model/kmeans_model.pkl', 'rb') as f:
+        kmean = pickle.load(f)
+
+    balance = float(request.args.get('balance'))
+    balance_frequency = float(request.args.get('balance_frequency'))
+    purchases = float(request.args.get('purchases'))
+    oneoff_purchases = float(request.args.get('oneoff_purchases'))
+    installments_purchases = float(request.args.get('installments_purchases'))
+    cash_advance = float(request.args.get('cash_advance'))
+    purchases_frequency = float(request.args.get('purchases_frequency'))
+    oneoff_purchases_frequency = float(request.args.get('oneoff_purchases_frequency'))
+    purchases_installments_frequency = float(request.args.get('purchases_installments_frequency'))
+    cash_advance_frequency = float(request.args.get('cash_advance_frequency'))
+    cash_advance_trx = float(request.args.get('cash_advance_trx'))
+    purchases_trx = float(request.args.get('purchases_trx'))
+    credit_limit = float(request.args.get('credit_limit'))
+    payments = float(request.args.get('payments'))
+    minimum_payments = float(request.args.get('minimum_payments'))
+    prc_full_payment = float(request.args.get('prc_full_payment'))
+    tenure = float(request.args.get('tenure'))
+
+    user_data = {
+        'BALANCE': balance,
+        'BALANCE_FREQUENCY': balance_frequency,
+        'PURCHASES': purchases,
+        'ONEOFF_PURCHASES': oneoff_purchases,
+        'INSTALLMENTS_PURCHASES': installments_purchases,
+        'CASH_ADVANCE': cash_advance,
+        'PURCHASES_FREQUENCY': purchases_frequency,
+        'ONEOFF_PURCHASES_FREQUENCY': oneoff_purchases_frequency,
+        'PURCHASES_INSTALLMENTS_FREQUENCY': purchases_installments_frequency,
+        'CASH_ADVANCE_FREQUENCY': cash_advance_frequency,
+        'CASH_ADVANCE_TRX': cash_advance_trx,
+        'PURCHASES_TRX': purchases_trx,
+        'CREDIT_LIMIT': credit_limit,
+        'PAYMENTS': payments,
+        'MINIMUM_PAYMENTS': minimum_payments,
+        'PRC_FULL_PAYMENT': prc_full_payment,
+        'TENURE': tenure
+    }
+
+
+    data = pd.DataFrame(user_data, index=[0])
+
+    columns = ['BALANCE', 'PURCHASES', 'ONEOFF_PURCHASES', 'INSTALLMENTS_PURCHASES', 'CASH_ADVANCE', 'CREDIT_LIMIT',
+            'PAYMENTS', 'MINIMUM_PAYMENTS']
+            
+    for c in columns:
+        
+        Range=c+'_RANGE'
+        data[Range]=0        
+        data.loc[((data[c]>0)&(data[c]<=500)),Range]=1
+        data.loc[((data[c]>500)&(data[c]<=1000)),Range]=2
+        data.loc[((data[c]>1000)&(data[c]<=3000)),Range]=3
+        data.loc[((data[c]>3000)&(data[c]<=5000)),Range]=4
+        data.loc[((data[c]>5000)&(data[c]<=10000)),Range]=5
+        data.loc[((data[c]>10000)),Range]=6
+
+    columns=['BALANCE_FREQUENCY', 'PURCHASES_FREQUENCY', 'ONEOFF_PURCHASES_FREQUENCY', 'PURCHASES_INSTALLMENTS_FREQUENCY', 
+            'CASH_ADVANCE_FREQUENCY', 'PRC_FULL_PAYMENT']
+
+    for c in columns:
+        Range=c+'_RANGE'
+        data[Range]=0
+        data.loc[((data[c]>0)&(data[c]<=0.1)),Range]=1
+        data.loc[((data[c]>0.1)&(data[c]<=0.2)),Range]=2
+        data.loc[((data[c]>0.2)&(data[c]<=0.3)),Range]=3
+        data.loc[((data[c]>0.3)&(data[c]<=0.4)),Range]=4
+        data.loc[((data[c]>0.4)&(data[c]<=0.5)),Range]=5
+        data.loc[((data[c]>0.5)&(data[c]<=0.6)),Range]=6
+        data.loc[((data[c]>0.6)&(data[c]<=0.7)),Range]=7
+        data.loc[((data[c]>0.7)&(data[c]<=0.8)),Range]=8
+        data.loc[((data[c]>0.8)&(data[c]<=0.9)),Range]=9
+        data.loc[((data[c]>0.9)&(data[c]<=1.0)),Range]=10
+
+    columns=['PURCHASES_TRX', 'CASH_ADVANCE_TRX']  
+
+    for c in columns:
+        
+        Range=c+'_RANGE'
+        data[Range]=0
+        data.loc[((data[c]>0)&(data[c]<=5)),Range]=1
+        data.loc[((data[c]>5)&(data[c]<=10)),Range]=2
+        data.loc[((data[c]>10)&(data[c]<=15)),Range]=3
+        data.loc[((data[c]>15)&(data[c]<=20)),Range]=4
+        data.loc[((data[c]>20)&(data[c]<=30)),Range]=5
+        data.loc[((data[c]>30)&(data[c]<=50)),Range]=6
+        data.loc[((data[c]>50)&(data[c]<=100)),Range]=7
+        data.loc[((data[c]>100)),Range]=8
+
+    data.drop(['BALANCE', 'BALANCE_FREQUENCY', 'PURCHASES',
+        'ONEOFF_PURCHASES', 'INSTALLMENTS_PURCHASES', 'CASH_ADVANCE',
+        'PURCHASES_FREQUENCY',  'ONEOFF_PURCHASES_FREQUENCY',
+        'PURCHASES_INSTALLMENTS_FREQUENCY', 'CASH_ADVANCE_FREQUENCY',
+        'CASH_ADVANCE_TRX', 'PURCHASES_TRX', 'CREDIT_LIMIT', 'PAYMENTS',
+        'MINIMUM_PAYMENTS', 'PRC_FULL_PAYMENT' ], axis=1, inplace=True)
+
+    X = np.asarray(data)
+
+    scaler = pd.read_pickle('model/scaler-cc.pkl')
+
+    X = scaler.fit_transform(X)
+
+    user_labels = kmean.predict(X)
+
+    return render_template('cc-prediction.html', prediction=user_labels)
 
 if __name__ == '__main__':
     app.run()

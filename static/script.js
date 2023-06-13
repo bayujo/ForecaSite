@@ -140,6 +140,57 @@ $(document).ready(function () {
     }
   });
 
+  $("#predict-cc").click(function () {
+    var form = document.getElementById('form');
+    if (!form.checkValidity()) {
+      form.reportValidity();
+    } else {
+      clickShowMap(null, "predict-cc", "Check cluster");
+  
+      var formData = {
+        balance: $("#balance").val(),
+        balance_frequency: $("#balance_frequency").val(),
+        purchases: $("#purchases").val(),
+        oneoff_purchases: $("#oneoff_purchases").val(),
+        installments_purchases: $("#installments_purchases").val(),
+        cash_advance: $("#cash_advance").val(),
+        purchases_frequency: $("#purchases_frequency").val(),
+        oneoff_purchases_frequency: $("#oneoff_purchases_frequency").val(),
+        purchases_installments_frequency: $("#purchases_installments_frequency").val(),
+        cash_advance_frequency: $("#cash_advance_frequency").val(),
+        cash_advance_trx: $("#cash_advance_trx").val(),
+        purchases_trx: $("#purchases_trx").val(),
+        credit_limit: $("#credit_limit").val(),
+        payments: $("#payments").val(),
+        minimum_payments: $("#minimum_payments").val(),
+        prc_full_payment: $("#prc_full_payment").val(),
+        tenure: $("#tenure").val()
+      };
+  
+      $.ajax({
+        type: "GET",
+        url: "/cc",
+        data: formData,
+        success: function (data) {
+          $("#refresh-table").html(data);
+          $("#map_hero").fadeOut()
+          $("#home-container10").fadeOut(function () {
+            $("#comparison_container").fadeIn();
+          });
+          clickShowMap(1, "predict-cc", "Check cluster");
+          setTimeout(function () {
+            $("#try-route").fadeIn();
+          }, 5000);
+        },
+        error: function (error) {
+          console.log(error);
+          clickShowMap(1, "predict-cc", "Check cluster");
+        },
+      });
+    }
+  });
+  
+
   $("#reset").click(function () {
     clickShowMap(null, "reset", "Reset");
     setTimeout(function () {

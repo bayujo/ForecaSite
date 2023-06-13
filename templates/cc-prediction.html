@@ -1,0 +1,64 @@
+{% if prediction[0] == 0 %}
+<h1 class="Headline2 home-text16 text-center">Buy it all!</h1>
+<div class="flex items-center justify-center text-center">
+  <h3 class="Subtitle2 text-xl">Your client is someone <span class="font-bold">who make all type of purchases</span></h3>
+</div>
+<div id="prediction-div" class="flex items-center justify-center">
+    <img alt="image" src="{{ url_for('static', filename='public/playground_assets/cc-0.png') }}"
+    class="py-12" />
+</div>
+{% elif prediction[0] == 1 %}
+<h1 class="Headline2 home-text16 text-center">This is one you might want to avoid.</h1>
+<div class="flex items-center justify-center text-center">
+  <h3 class="Subtitle2 text-xl">Your client is someone <span class="font-bold">with due payments</span>.</h3>
+</div>
+<div id="prediction-div" class="flex items-center justify-center">
+    <img alt="image" src="{{ url_for('static', filename='public/playground_assets/cc-1.png') }}"
+    class="py-12" />
+</div>
+{% elif prediction[0] == 2 %}
+<h1 class="Headline2 home-text16 text-center">Lets hope you don't over do it.</h1>
+<div class="flex items-center justify-center text-center">
+  <h3 class="Subtitle2 text-xl">Your client is someone <span class="font-bold">who purchases mostly in installments</span>.</h3>
+</div>
+<div id="prediction-div" class="flex items-center justify-center">
+    <img alt="image" src="{{ url_for('static', filename='public/playground_assets/cc-2.png') }}"
+    class="py-12" />
+</div>
+{% elif prediction[0] == 3 %}
+<h1 class="Headline2 home-text16 text-center">Look how rich I am.</h1>
+<div class="flex items-center justify-center text-center">
+  <h3 class="Subtitle2 text-xl">Your client is someone <span class="font-bold">who take more cash in advance</span>.</h3>
+</div>
+<div id="prediction-div" class="flex items-center justify-center">
+    <img alt="image" src="{{ url_for('static', filename='public/playground_assets/cc-3.png') }}"
+    class="py-12" />
+</div>
+{% elif prediction[0] == 4 %}
+<h1 class="Headline2 home-text16 text-center">Work hard, party hard!</h1>
+<div class="flex items-center justify-center text-center">
+  <h3 class="Subtitle2 text-xl">Your client is someone <span class="font-bold">who make expensive purchases</span>.</h3>
+</div>
+<div id="prediction-div" class="flex items-center justify-center">
+    <img alt="image" src="{{ url_for('static', filename='public/playground_assets/cc-4.png') }}"
+    class="py-12" />
+</div>
+{% elif prediction[0] == 5 %}
+<h1 class="Headline2 home-text16 text-center">Cutting corners!</h1>
+<div class="flex items-center justify-center text-center">
+  <h3 class="Subtitle2 text-xl">Your client is someone <span class="font-bold">who don't spend much money</span>.</h3>
+</div>
+<div id="prediction-div" class="flex items-center justify-center">
+    <img alt="image" src="{{ url_for('static', filename='public/playground_assets/cc-5.png') }}"
+    class="py-12" />
+</div>
+{% else %}
+<h1 class="Headline2 home-text16 text-center">Sorry there is problem from our server.</h1>
+<div class="flex items-center justify-center text-center">
+  <h3 class="Subtitle2 text-xl">Our little machine is a bit confused, please try again later.</h3>
+</div>
+<div id="prediction-div" class="flex items-center justify-center">
+    <img alt="image" src="{{ url_for('static', filename='public/playground_assets/kuru.gif') }}"
+    class="py-12" />
+</div>
+{% endif %}

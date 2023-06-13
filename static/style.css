@@ -32,6 +32,7 @@
   --dl-space-space-doubleunit: 2rem;
   --dl-space-space-tripleunit: 3rem;
   --dl-color-turquoise-default: #2ec5ceff;
+  --dl-color-blue-default: #7CCDF0;
 }
 .teleport-show {
   display: flex !important;
