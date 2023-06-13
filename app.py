@@ -265,5 +265,26 @@ def predict_rain():
 
     return render_template('wheater-prediction.html', prediction=prediction)
 
+@app.route('/heart-failure-index')
+def heart_index():
+    return render_template('heart-failure.html', active_link = 'heart')
+
+@app.route('/heart-failure')
+def predict_heart():
+    time = request.args.get('time')
+    ejection_fraction = request.args.get('ejection_fraction')
+    serum_creatinine = request.args.get('serum_creatinine')
+
+    with open('model/gradient_boost_model.pkl', 'rb') as f:
+        loaded_model = pickle.load(f)
+
+    user_input = pd.DataFrame({'time': [time],
+                            'ejection_fraction': [ejection_fraction],
+                            'serum_creatinine': [serum_creatinine]})
+
+    gradientboost_pred = loaded_model.predict(user_input)
+
+    return render_template('heart-prediction.html', prediction=gradientboost_pred)
+
 if __name__ == '__main__':
     app.run()

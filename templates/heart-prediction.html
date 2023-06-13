@@ -1,0 +1,28 @@
+{% if prediction[0] == 1 %}
+<h1 class="Headline2 home-text16 text-center">We're so sorry</h1>
+<div class="flex items-center justify-center text-center">
+  <h3 class="Subtitle2 text-xl">The patients death will likely occur during the follow-up period.</h3>
+</div>
+<div id="prediction-div" class="flex items-center justify-center">
+    <img alt="image" src="{{ url_for('static', filename='public/playground_assets/love-alt.png') }}"
+    class="py-12" />
+</div>
+{% elif prediction[0] == 0 %}
+<h1 class="Headline2 home-text16 text-center">Congratulations!</h1>
+<div class="flex items-center justify-center text-center">
+  <h3 class="Subtitle2 text-xl">It is also our joy that someone will live another day for another chance.</h3>
+</div>
+<div id="prediction-div" class="flex items-center justify-center">
+    <img alt="image" src="{{ url_for('static', filename='public/playground_assets/love.png') }}"
+    class="py-12" />
+</div>
+{% else %}
+<h1 class="Headline2 home-text16 text-center">Sorry there is problem from our server.</h1>
+<div class="flex items-center justify-center text-center">
+  <h3 class="Subtitle2 text-xl">Our little machine is a bit confused, please try again later.</h3>
+</div>
+<div id="prediction-div" class="flex items-center justify-center">
+    <img alt="image" src="{{ url_for('static', filename='public/playground_assets/kuru.gif') }}"
+    class="py-12" />
+</div>
+{% endif %}

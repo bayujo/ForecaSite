@@ -104,6 +104,42 @@ $(document).ready(function () {
     }
   });
 
+  $("#predict-heart").click(function () {
+    var form = document.getElementById('form');
+    if (!form.checkValidity()) {
+      form.reportValidity();
+    } else {
+      clickShowMap(null, "predict-heart", "Check patient");
+      var time = $("#time").val();
+      var ejection_fraction = $("#ejection_fraction").val();
+      var serum_creatinine = $("#serum_creatinine").val();
+      $.ajax({
+        type: "GET",
+        url: "/heart-failure",
+        data: {
+          time: time,
+          ejection_fraction: ejection_fraction,
+          serum_creatinine: serum_creatinine,
+        },
+        success: function (data) {
+          $("#refresh-table").html(data);
+          $("#map_hero").fadeOut()
+          $("#home-container10").fadeOut(function () {
+            $("#comparison_container").fadeIn();
+          });
+          clickShowMap(1, "predict-heart", "Check patient");
+          setTimeout(function () {
+            $("#try-route").fadeIn();
+          }, 5000);
+        },
+        error: function (error) {
+          console.log(error);
+          clickShowMap(1, "predict-heart", "Check patient");
+        },
+      });
+    }
+  });
+
   $("#reset").click(function () {
     clickShowMap(null, "reset", "Reset");
     setTimeout(function () {
