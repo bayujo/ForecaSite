@@ -205,7 +205,7 @@
         </div>
       </div>
       <div class="bg-[var(--dl-color-turquoise-100)] w-full">
-        <div class="home-testimonials my-48 pl-96 pr-96" id="home-testimonials">
+        <div class="home-testimonials pt-12 sm:pt-24 md:pt-36 lg:pt-48 xl:pt-64 pb-12 sm:pb-24 md:pb-36 lg:pb-48 xl:pb-64 pl-6 sm:pl-12 md:pl-24 lg:pl-48 xl:pl-96 pr-6 sm:pr-12 md:pr-24 lg:pr-48 xl:pr-96" id="home-testimonials">
           <div id="map_hero" class="home-container08">
             <div class="home-container09">
               <img alt="image" src="{{ url_for('static', filename='public/playground_assets/cloud.svg') }}"
@@ -416,7 +416,7 @@
       {% include 'footer.html' %}
     </div>
   </div>
-  <script src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
+  <script src="{{ url_for('static', filename='custom-script.js') }}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
 </body>
 
